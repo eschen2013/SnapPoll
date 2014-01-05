@@ -1,8 +1,17 @@
 SnapPoll::Application.routes.draw do
-  match 'auth/:provider/callback', to: 'sessions#create'
-  match 'auth/failure', to: redirect('/')
-  match 'signout', to: 'sessions#destroy', as: 'signout'
-  
+  root "home#index"
+  resources :votes
+
+  resources :invites
+
+  resources :polls, only: [:show, :new, :create]
+
+  resources :users, only: [:show]
+
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
