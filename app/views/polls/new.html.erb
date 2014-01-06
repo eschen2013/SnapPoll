@@ -1,0 +1,26 @@
+<%= form_for @poll do |f| %>
+  <fieldset>
+    <div>
+      <%= f.label :body, "Ask a question!" %>
+      <%= f.text_field :body %>
+    </div>
+
+    <div>
+      <%= f.label :allow_write_in, "Allow write-ins?" %>
+      <%= f.check_box :allow_write_in %>
+    </div>
+
+    <%= f.fields_for :answers do |answer_fields| %>
+      <div>
+        <%= answer_fields.label :body, "Add a choice:" %>
+        <%= answer_fields.text_field :body %>
+      </div>
+    <% end %>
+
+    <div>
+      <%= f.label "Ends in?" %>
+      <%= f.time_field :expires_at %>
+    </div>
+  </fieldset>
+  <%= f.submit %>
+<% end %> 

@@ -1,0 +1,7 @@
+<p><%= @poll.body %></p>
+<%= form_for @vote, remote: true do |f| %>
+  <% @poll.answers.each do |answer| %>
+    <div><%= radio_button "vote", "answer", answer.id %><%= answer.body %></div>
+  <% end %>
+  <%= f.submit "Vote!"%>
+<% end %>

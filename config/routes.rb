@@ -2,7 +2,7 @@ SnapPoll::Application.routes.draw do
   root "home#index"
   resources :votes
 
-  resources :invites
+  resources :poll_users
 
   resources :polls, only: [:show, :new, :create]
 
