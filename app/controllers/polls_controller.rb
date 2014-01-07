@@ -7,6 +7,7 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find params[:id]
     @vote = Vote.new
+    @vote.poll_user = PollUser.find_by(poll_id: @poll.id, user_id: current_user.id)
   end
 
   def create

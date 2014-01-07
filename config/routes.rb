@@ -1,12 +1,11 @@
 SnapPoll::Application.routes.draw do
   root "home#index"
-  resources :votes
+  get "user" => "users#index"
+  resources :votes, only: [:create]
 
   resources :poll_users
 
   resources :polls, only: [:show, :new, :create]
-
-  resources :users, only: [:show]
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')

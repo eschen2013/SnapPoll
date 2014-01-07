@@ -1,7 +1,8 @@
 <p><%= @poll.body %></p>
-<%= form_for @vote, remote: true do |f| %>
+<%= form_for @vote, remote: false do |f| %>
+  <%= hidden_field_tag 'poll_id', @poll.id %>
   <% @poll.answers.each do |answer| %>
-    <div><%= radio_button "vote", "answer", answer.id %><%= answer.body %></div>
+    <div><%= radio_button :vote, :answer_id, answer.id %><%= answer.body %></div>
   <% end %>
-  <%= f.submit "Vote!"%>
+  <%= f.submit%>
 <% end %>
