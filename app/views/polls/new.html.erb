@@ -1,5 +1,37 @@
 <%= form_for @poll do |f| %>
-  <fieldset>
+<div class="row">
+  <div class="col-xs-12 col-md-9">
+    <div class="panel panel-primary">
+
+      <div class="panel-heading">
+        <div class="media">
+          <%= image_tag href="http://graph.facebook.com/#{current_user.uid}/picture?width=25&redirect=1&type=square&height=25", class: "media-object img-rounded pull-left"%>
+          <div class="media-body">
+            <b>Create a new poll!</b>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+        <div class="col-xs-3">
+          <div class="btn btn-primary fileinput-button">
+            <span class="glyphicon glyphicon-camera pull-left"></span>
+            <span class="hidden.xs">Upload photo</span>
+          </div>
+          <img id="uploadPreview" class="img-responsive img-rounded"/>
+        </div>
+        <div class="col-xs-9">
+          <%= f.label :body, class: "sr-only" %>
+          <%= f.text_area :body, class: "form-control input-sm", placeholder: "Enter a question!" %>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!--
     <div>
       <%= f.label :body, "Ask a question!" %>
       <%= f.text_field :body %>
@@ -21,6 +53,6 @@
       <%= f.label "Ends in?" %>
       <%= f.time_field :expires_at %>
     </div>
-  </fieldset>
   <%= f.submit %>
+-->
 <% end %> 

@@ -7,7 +7,6 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find params[:id]
     @vote = Vote.new
-    @vote.poll_user = PollUser.find_by(poll_id: @poll.id, user_id: current_user.id)
   end
 
   def create
@@ -19,10 +18,10 @@ class PollsController < ApplicationController
     @poll.user = current_user
     @poll.save
 
-    @poll_user = PollUser.new
-    @poll_user.poll = @poll
-    @poll_user.user = @current_user
-    @poll_user.save
+    @vote = Vote.new
+    @vote.poll = @poll
+    @vote.user = @current_user
+    @vote.save
 
     redirect_to @poll
   end

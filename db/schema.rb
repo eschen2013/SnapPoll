@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140108013253) do
+ActiveRecord::Schema.define(version: 20140108025105) do
 
   create_table "answers", force: true do |t|
     t.integer  "poll_id"
@@ -21,16 +21,6 @@ ActiveRecord::Schema.define(version: 20140108013253) do
   end
 
   add_index "answers", ["poll_id"], name: "index_answers_on_poll_id"
-
-  create_table "poll_users", force: true do |t|
-    t.integer  "poll_id"
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "poll_users", ["poll_id"], name: "index_poll_users_on_poll_id"
-  add_index "poll_users", ["user_id"], name: "index_poll_users_on_user_id"
 
   create_table "polls", force: true do |t|
     t.integer  "user_id"
@@ -60,9 +50,14 @@ ActiveRecord::Schema.define(version: 20140108013253) do
     t.integer  "answer_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "poll_id"
   end
 
   add_index "votes", ["answer_id"], name: "index_votes_on_answer_id"
+  add_index "votes", ["poll_id"], name: "index_votes_on_poll_id"
   add_index "votes", ["poll_user_id"], name: "index_votes_on_poll_user_id"
+  add_index "votes", ["user_id", "poll_id"], name: "index_votes_on_user_id_and_poll_id"
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
 
 end

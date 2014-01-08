@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_many :polls
   has_many :poll_users
-  has_many :poll_interests, through: :poll_users, class_name: "Poll"
+  has_many :voting_polls, through: :votes, class_name: "Poll"
 
   def self.from_omniauth(auth)
     where(auth.slice(:provider, :uid)).first_or_initialize.tap do |user|
