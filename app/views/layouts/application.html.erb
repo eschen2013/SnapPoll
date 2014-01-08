@@ -8,15 +8,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="container">
-  <header class="row">
+
+  <header>
     <%= render 'layouts/navigation' %>
   </header>
+
+  <div class="container">
   <!--
   <p class="notice"><%=notice%></p>
   <p class="alert"><%=alert%></p>
 -->
   <%= yield %>
+  </div>
 </body>
-</div>
 </html>

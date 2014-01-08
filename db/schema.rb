@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140106193958) do
+ActiveRecord::Schema.define(version: 20140108013253) do
 
   create_table "answers", force: true do |t|
     t.integer  "poll_id"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 20140106193958) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "first_name"
+    t.string   "last_name"
   end
 
   create_table "votes", force: true do |t|

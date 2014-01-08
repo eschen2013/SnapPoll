@@ -3,12 +3,17 @@
     <div class="panel panel-primary">
 
       <div class="panel-heading">
-        I want to know...
+        <div class="media">
+          <%= image_tag href="http://graph.facebook.com/#{@poll.user.uid}/picture?width=25&redirect=1&type=square&height=25", class: "media-object img-rounded pull-left"%>
+          <div class="media-body">
+            <b><%=@poll.user.first_name%> wants to know...</b>
+          </div>
+        </div>
       </div>
 
       <div class="panel-body row">
         <div class="col-xs-4">
-          <%= image_tag "cat-wins.gif", class: "img-responsive" %>
+          <%= image_tag "cat-wins.gif", class: "img-responsive img-rounded" %>
         </div>
         <div class="col-xs-8">
           <%= @poll.body %>  
@@ -20,7 +25,7 @@
           <a href="#" class="list-group-item">
             <div class="row">
               <div class="col-xs-4">
-                <%= image_tag "loser.gif", class: "img-responsive" %>
+                <%= image_tag "loser.gif", class: "img-responsive img-rounded" %>
               </div>
               <div class="col-xs-8">
                 <%= answer.body %>
