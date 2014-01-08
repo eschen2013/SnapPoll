@@ -14,20 +14,49 @@
 
       <div class="panel-body">
         <div class="row">
-        <div class="col-xs-3">
-          <div class="btn btn-primary fileinput-button">
-            <span class="glyphicon glyphicon-camera pull-left"></span>
-            <span class="hidden.xs">Upload photo</span>
+          <div class="col-xs-2">
+            <div class="btn btn-primary btn-sm fileinput-button">
+              <span class="glyphicon glyphicon-camera pull-left"></span>
+            </div>
+            <img id="uploadPreview" class="img-responsive img-rounded"/>
           </div>
-          <img id="uploadPreview" class="img-responsive img-rounded"/>
-        </div>
-        <div class="col-xs-9">
-          <%= f.label :body, class: "sr-only" %>
-          <%= f.text_area :body, class: "form-control input-sm", placeholder: "Enter a question!" %>
-        </div>
+          <div class="col-xs-10">
+            <%= f.label :body, class: "sr-only" %>
+            <%= f.text_area :body, class: "form-control input-sm", placeholder: "Enter a question!" %>
+          </div>
         </div>
       </div>
 
+      <div class="list-group">
+        <%= f.fields_for :answers do |answer_fields| %>
+          <div class="list-group-item">
+            <div class="row">
+              <div class="col-xs-2">
+                <div class="btn btn-primary btn-sm fileinput-button">
+                  <span class="glyphicon glyphicon-camera pull-left"></span>
+                </div>
+              </div>
+              <div class="col-xs-10">
+                <%= answer_fields.label :body, class: "sr-only" %>
+                <%= answer_fields.text_field :body, class: "form-control input-sm", placeholder: "Enter poll option!" %>
+                <button type="button" class="btn btn-primary btn-sm pull-right" disabled="disabled"><span class="caret"></span><span class="pull-right">More</span></button>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="panel-footer">
+        <div class="row">
+          <div class="col-sm-4">
+            <%= f.check_box :allow_write_in, class: "form-control" %>
+            <%= f.label :allow_write_in, "Allow write-ins?" %>
+          </div>
+          <div class="col-sm-4 col-sm-offset-4">
+            <%= f.submit class: "form-control pull-left" %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

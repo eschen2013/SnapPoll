@@ -1,7 +1,7 @@
 class PollsController < ApplicationController
   def new
     @poll = Poll.new
-    4.times { @poll.answers.build }
+    @poll.answers.build
   end
 
   def show
