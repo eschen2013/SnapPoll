@@ -21,18 +21,15 @@
       </div>
 
       <div class="list-group">
-        <% @poll.answers.each do |answer| %>
-          <a href="#" class="list-group-item">
-            <div class="row">
-              <div class="col-xs-3">
-                <%= image_tag "loser.gif", class: "img-responsive img-rounded" %>
-              </div>
-              <div class="col-xs-9">
-                <%= answer.body %>
-              </div>
-            </div>
-            <p>Results: </p>
-          </a>
+        <% @votes.each do |vote| %>
+          <%= form_for vote, class: "blah" do |f| %>
+            <a href="#" class="list-group-item vote-button">
+              <%= f.hidden_field :answer_id %>
+              <%= f.hidden_field :poll_id %> 
+              <%= render 'answer', answer: vote.answer %>
+              <p>Results: </p>
+            </a>
+          <% end %>
         <% end %>
       </div>
 

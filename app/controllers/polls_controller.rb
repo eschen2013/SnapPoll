@@ -6,7 +6,7 @@ class PollsController < ApplicationController
 
   def show
     @poll = Poll.find params[:id]
-    @vote = Vote.new
+    @votes = @poll.answers.map { |a| Vote.new(answer: a, poll: @poll) }
   end
 
   def create

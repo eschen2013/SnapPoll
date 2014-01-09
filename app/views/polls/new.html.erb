@@ -28,8 +28,9 @@
       </div>
 
       <div class="list-group">
-        <%= f.fields_for :answers do |answer_fields| %>
-          <div class="list-group-item">
+
+        <%= f.fields_for :answers, @poll.answers.find_or_initialize_by(poll: @poll) do |a| %>
+          <div class="list-group-item copy-fields">
             <div class="row">
               <div class="col-xs-2">
                 <div class="btn btn-primary btn-sm fileinput-button">
@@ -37,9 +38,12 @@
                 </div>
               </div>
               <div class="col-xs-10">
-                <%= answer_fields.label :body, class: "sr-only" %>
-                <%= answer_fields.text_field :body, class: "form-control input-sm", placeholder: "Enter poll option!" %>
-                <button type="button" class="btn btn-primary btn-sm pull-right" disabled="disabled"><span class="caret"></span><span class="pull-right">More</span></button>
+                <%= a.label :body, class: "sr-only" %>
+                <%= a.text_field :body, class: "form-control input-sm", placeholder: "Enter poll option!" %>
+                <%= link_to_add_fields "More", f, :answers %>
+                <!--<button type="button" class="btn btn-primary btn-sm pull-right" disabled="disabled">
+
+                  <span class="caret"></span><span class="pull-right">More</span></button>-->
               </div>
             </div>
           </div>
@@ -60,28 +64,4 @@
     </div>
   </div>
 </div>
-<!--
-    <div>
-      <%= f.label :body, "Ask a question!" %>
-      <%= f.text_field :body %>
-    </div>
-
-    <div>
-      <%= f.label :allow_write_in, "Allow write-ins?" %>
-      <%= f.check_box :allow_write_in %>
-    </div>
-
-    <%= f.fields_for :answers do |answer_fields| %>
-      <div>
-        <%= answer_fields.label :body, "Add a choice:" %>
-        <%= answer_fields.text_field :body %>
-      </div>
-    <% end %>
-
-    <div>
-      <%= f.label "Ends in?" %>
-      <%= f.time_field :expires_at %>
-    </div>
-  <%= f.submit %>
--->
-<% end %> 
+<% end %>
