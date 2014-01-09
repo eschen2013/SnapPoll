@@ -5,7 +5,7 @@
 
       <div class="panel-heading">
         <div class="media">
-          <%= image_tag href="http://graph.facebook.com/#{current_user.uid}/picture?width=25&redirect=1&type=square&height=25", class: "media-object img-rounded pull-left"%>
+          <%= fb_image_tag current_user %>
           <div class="media-body">
             <b>Create a new poll!</b>
           </div>
@@ -15,8 +15,9 @@
       <div class="panel-body">
         <div class="row">
           <div class="col-xs-2">
-            <div class="btn btn-primary btn-sm fileinput-button">
+            <div class="btn btn-primary btn-sm fileUpload">
               <span class="glyphicon glyphicon-camera pull-left"></span>
+              <input type="file" class="upload" />
             </div>
             <img id="uploadPreview" class="img-responsive img-rounded"/>
           </div>
@@ -39,8 +40,8 @@
               </div>
               <div class="col-xs-10">
                 <%= a.label :body, class: "sr-only" %>
-                <%= a.text_field :body, class: "form-control input-sm", placeholder: "Enter poll option!" %>
-                <%= link_to_add_fields "More", f, :answers %>
+                <%= a.text_field :body, class: "form-control input-sm", placeholder: "Enter poll answer!" %>
+                <%= link_to_add_fields "+Answer", f, :answers %>
                 <!--<button type="button" class="btn btn-primary btn-sm pull-right" disabled="disabled">
 
                   <span class="caret"></span><span class="pull-right">More</span></button>-->
@@ -53,11 +54,14 @@
       <div class="panel-footer">
         <div class="row">
           <div class="col-sm-4">
-            <%= f.check_box :allow_write_in, class: "form-control" %>
-            <%= f.label :allow_write_in, "Allow write-ins?" %>
+            <div class="checkbox">
+            <%= f.label :allow_write_in do %>
+              <%= f.check_box :allow_write_in %>Allow write-ins?
+            <% end %>
+            </div>
           </div>
           <div class="col-sm-4 col-sm-offset-4">
-            <%= f.submit class: "form-control pull-left" %>
+            <%= f.submit class: "btn btn-primary col-xs-12" %>
           </div>
         </div>
       </div>

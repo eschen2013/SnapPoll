@@ -4,7 +4,7 @@
 
       <div class="panel-heading">
         <div class="media">
-          <%= image_tag href="http://graph.facebook.com/#{@poll.user.uid}/picture?width=25&redirect=1&type=square&height=25", class: "media-object img-rounded pull-left"%>
+          <%= fb_image_tag @poll.user %>
           <div class="media-body">
             <b><%=@poll.user.first_name%> wants to know...</b>
           </div>

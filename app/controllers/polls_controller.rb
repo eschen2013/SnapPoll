@@ -18,11 +18,6 @@ class PollsController < ApplicationController
     @poll.user = current_user
     @poll.save
 
-    @vote = Vote.new
-    @vote.poll = @poll
-    @vote.user = @current_user
-    @vote.save
-
     redirect_to @poll
   end
 end

@@ -6,4 +6,8 @@ module ApplicationHelper
     end
     link_to_function(name, "add_fields(this, \"#{association}\", \"#{escape_javascript(fields)}\")")
   end
+
+  def fb_image_tag user
+    image_tag href="http://graph.facebook.com/#{user.uid}/picture?width=25&redirect=1&type=square&height=25", class: "media-object img-rounded pull-left"
+  end
 end
