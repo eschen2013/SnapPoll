@@ -17,7 +17,6 @@ function PreviewImage() {
 $(document).ready(function(){
    $(document).on("click",".vote-button",function(){
      var form = $(this).closest("form");
-     //console.log(form);
      form.submit();
    });
 });

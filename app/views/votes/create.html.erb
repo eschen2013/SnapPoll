@@ -1,5 +1,5 @@
 <% if @vote.persisted? %>
   <div>You voted for <%= @vote.answer.body %>!</div>
 <% else %>
-  <div>Oops, you already voted!</div>
+  <div><%= @vote.errors.messages %></div>
 <% end %>
