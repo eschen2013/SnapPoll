@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 private
   def check_user
     if !current_user
+      flash[:referer] = request.referer
       redirect_to '/auth/facebook'
     end
   end
