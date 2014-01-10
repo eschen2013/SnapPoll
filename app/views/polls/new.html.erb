@@ -29,7 +29,7 @@
         <%#= f.fields_for :answers, @poll.answers.find_or_initialize_by(poll: @poll) do |a| %>
         <%= f.fields_for :answers, @answers do |a| %>
           <div class="list-group-item copy-fields">
-            <%= render "answer_fields", f: a %>
+            <%= render "answer_fields", f: a, placeholder: "Enter an answer!" %>
           </div>
         <% end %>
       </div>

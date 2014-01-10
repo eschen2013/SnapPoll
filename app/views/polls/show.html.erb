@@ -53,7 +53,7 @@
           <% if !@user_vote and @poll.allow_write_in %>
             <div class="list-group-item">
               <%= form_for @answer do |f| %>
-                <%= render "answer_fields", f: f %>
+                <%= render "answer_fields", f: f, placeholder: "Submit your own answer!" %>
               <% end %>
             </div>
           <% end %>
