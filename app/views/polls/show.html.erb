@@ -24,6 +24,7 @@
 
       <div class="list-group">
         <% @votes.each do |vote| %>
+          <% next if vote.answer.blank? %>
           <% if @user_vote %>
             <div class="list-group-item <%= "alert-success" if @user_vote.answer == vote.answer %>">
               <%= render 'answer', answer: vote.answer %>
