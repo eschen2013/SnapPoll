@@ -1,4 +1,6 @@
 class PollsController < ApplicationController
+  skip_before_action :check_user, only: [:show]
+
   def new
     @poll = Poll.new
     4.times { @poll.answers.build }
@@ -7,12 +9,12 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find params[:id]
     @votes = @poll.answers.map { |a| Vote.new(answer: a, poll: @poll) }
-    @user_vote = @poll.votes.find_by(user: current_user)
-    @answer = Answer.new
-    @answer.poll = @poll
-    if @user_vote 
+    if current_user
+      @user_vote = @poll.votes.find_by(user: current_user)
       @num_votes = @poll.votes.count
     end
+    @answer = Answer.new
+    @answer.poll = @poll
   end
 
   def create
