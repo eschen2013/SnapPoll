@@ -20,7 +20,7 @@ class PollsController < ApplicationController
                                              :image, 
                                              :allow_write_in,  
                                              :expires_at,
-                                             answers_attributes: [:id, :body])
+                                             answers_attributes: [:id, :body, :image])
     @poll = Poll.new safe_poll
     @poll.user = current_user
     @poll.save

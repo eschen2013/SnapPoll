@@ -6,13 +6,12 @@ function add_fields(link, association, content) {
   });
 };
 
-function PreviewImage() {
+function PreviewImage(idx) {
   var oFReader = new FileReader();
-  console.log(document.getElementById("fileupload").files[0]);
-  oFReader.readAsDataURL(document.getElementById("fileupload").files[0]);
-  $("#fileUpload").hide();
+  oFReader.readAsDataURL(document.getElementById("photo-input-"+idx).files[0]);
+  $("#photo-btn-"+idx).hide();
   oFReader.onload = function (oFREvent) {
-    document.getElementById("uploadPreview").src = oFREvent.target.result;
+    document.getElementById("photo-preview-"+idx).src = oFREvent.target.result;
   };
 };
 

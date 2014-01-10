@@ -17,3 +17,6 @@
 
 # Ignore uploads
 /public/uploads
+
+# Ignore cloudinary
+/config/cloudinary.yml
