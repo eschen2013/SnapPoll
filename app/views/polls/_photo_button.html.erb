@@ -2,4 +2,3 @@
   <span class="glyphicon glyphicon-camera pull-left"></span>
   <%= f.file_field :image, class: "upload", id: "photo-input-#{f.index}", onchange: "PreviewImage('#{f.index}');"%>
 <% end %>
-<img id="photo-preview-<%=f.index%>" class="img-responsive"/>

@@ -9,9 +9,9 @@ function add_fields(link, association, content) {
 function PreviewImage(idx) {
   var oFReader = new FileReader();
   oFReader.readAsDataURL(document.getElementById("photo-input-"+idx).files[0]);
-  $("#photo-btn-"+idx).hide();
   oFReader.onload = function (oFREvent) {
     document.getElementById("photo-preview-"+idx).src = oFREvent.target.result;
+    $("#photo-div-"+idx).show
   };
 };
 

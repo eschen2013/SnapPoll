@@ -1,8 +1,13 @@
 <div class="row">
-  <div class="col-xs-3" style="padding-left: 1px;">
+  <div class="col-xs-12 col-sm-6" id="photo-div-<%=f.index%>">
+    <img id="photo-preview-<%=f.index%>" class="img-responsive"/>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-2">
     <%= render "photo_button", f: f %>
   </div>
-  <div class="col-xs-9">
+  <div class="col-xs-10">
     <%= f.label :body, class: "sr-only" %>
     <%= f.text_field :body, class: "form-control input-sm", placeholder: placeholder %>
   </div>
