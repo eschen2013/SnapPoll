@@ -27,8 +27,15 @@
           <% if @user_vote %>
             <div class="list-group-item <%= "alert-success" if @user_vote.answer == vote.answer %>">
               <%= render 'answer', answer: vote.answer %>
-              <div class="progress">
-                <div class="progress-bar" style="width: <%=100*vote.answer.votes.count/@num_votes%>%">
+              <div class="row">
+                <div class="col-xs-8">
+                  <div class="progress">
+                    <div class="progress-bar" style="width: <%=100*vote.answer.votes.count/@num_votes%>%">
+                    </div>
+                  </div>
+                </div>
+                <div class="col-xs-1">
+                  <span class="badge"><%=vote.answer.votes.count%></span>
                 </div>
               </div>
             </div>
