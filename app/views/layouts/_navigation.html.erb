@@ -1,5 +1,5 @@
 <%# navigation styled for Bootstrap 3.0 %>
-<nav class="navbar navbar-static-top">
+<nav class="navbar navbar-inverse navbar-static-top">
   <div class="container">
     <div class="navbar-header">
       <%= link_to 'SnapPoll', root_path, class: 'navbar-brand' %>
@@ -10,7 +10,7 @@
         <span class="icon-bar"></span>
       </button>
     </div>
-    <div class="collapse navbar-collapse" id="navbar-main">
+    <div class="collapse navbar-inverse-collapse navbar-collapse" id="navbar-main">
       <ul class="nav navbar-nav navbar-right">
         <%= render 'layouts/navigation_links' %>
       </ul>
