@@ -43,6 +43,7 @@ group :production do
 end
 
 gem 'carrierwave'
+gem 'cloudinary'
 gem "koala", "~> 1.8.0rc1"
 
 # Use ActiveModel has_secure_password
