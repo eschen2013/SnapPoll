@@ -5726,7 +5726,7 @@ a.thumbnail.active {
 }
 
 .progress {
-  height: 20px;
+  height: 10px;
   margin-bottom: 20px;
   overflow: hidden;
   background-color: #f5f5f5;
@@ -5843,7 +5843,6 @@ a.thumbnail.active {
   display: block;
   padding: 10px 15px;
   margin-bottom: -1px;
-  background-color: #ffffff;
   border: 1px solid #dddddd;
 }
 

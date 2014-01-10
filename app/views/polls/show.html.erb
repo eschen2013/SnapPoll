@@ -1,10 +1,10 @@
 <div class="row">
   <div class="col-xs-12 col-md-9">
-    <div class="panel panel-primary">
+    <div class="panel <%= @user_vote ? "panel-success" : "panel-primary" %>">
 
       <div class="panel-heading">
         <div class="media">
-          <%= fb_image_tag @poll.user %>
+          <%= fb_image_tag @poll.user.uid, class: "media-object img-rounded pull-left img-fb" %>
           <div class="media-body">
             <b><%=@poll.user.first_name%> wants to know...</b>
           </div>
@@ -12,9 +12,11 @@
       </div>
 
       <div class="panel-body row">
-        <div class="col-xs-3">
-          <%= image_tag "cat-wins.gif", class: "img-responsive img-rounded" %>
-        </div>
+        <% if @poll.image_url %>
+          <div class="col-xs-3">
+            <%= image_tag @poll.image_url.to_s, class: "img-responsive" %>
+          </div>
+        <% end %>
         <div class="col-xs-9">
           <p class="lead"><%= @poll.body %></p> 
         </div>
@@ -22,17 +24,36 @@
 
       <div class="list-group">
         <% @votes.each do |vote| %>
-          <%= form_for vote, class: "blah" do |f| %>
-            <a href="#" class="list-group-item vote-button">
-              <%= f.hidden_field :answer_id %>
-              <%= f.hidden_field :poll_id %> 
+          <% if @user_vote %>
+            <div class="list-group-item <%= "alert-success" if @user_vote.answer == vote.answer %>">
               <%= render 'answer', answer: vote.answer %>
-              <p>Results: </p>
-            </a>
+              <div class="progress">
+                <div class="progress-bar" style="width: <%=100*vote.answer.votes.count/@num_votes%>%">
+                </div>
+              </div>
+            </div>
+          <% else %>
+            <%= form_for vote, class: "blah" do |f| %>
+              <a href="#" class="list-group-item vote-button">
+                <%= f.hidden_field :answer_id %>
+                <%= f.hidden_field :poll_id %> 
+                <%= render 'answer', answer: vote.answer %>
+              </a>
+            <% end %>
           <% end %>
         <% end %>
+          <% if !@user_vote and @poll.allow_write_in %>
+            <div class="list-group-item">
+              <%= form_for @answer do |f| %>
+                <%= render "answer_fields", f: f %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
       </div>
 
     </div>
+  <div class="col-xs-12 col-md-3">
+    <%= render "friends" %>
   </div>
 </div>

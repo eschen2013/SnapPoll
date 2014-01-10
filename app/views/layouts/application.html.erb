@@ -8,7 +8,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+  <div id="fb-root" data-app-id="<%= ENV['FACEBOOK_APP_ID'] %>"></div>
   <header>
     <%= render 'layouts/navigation' %>
   </header>

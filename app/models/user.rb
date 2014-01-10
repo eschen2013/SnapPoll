@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :polls
   has_many :poll_users
+  has_many :votes
   has_many :voting_polls, through: :votes, class_name: "Poll"
 
   def self.from_omniauth(auth)
@@ -14,5 +15,13 @@ class User < ActiveRecord::Base
       user.oauth_expires_at = Time.at(auth.credentials.expires_at)
       user.save!
     end
+  end
+
+  def friends
+    graph.get_connections("me", "friends")
+  end
+
+  def graph
+    Koala::Facebook::API.new oauth_token
   end
 end

@@ -5,7 +5,7 @@
 
       <div class="panel-heading">
         <div class="media">
-          <%= fb_image_tag current_user %>
+          <%= fb_image_tag current_user.uid, class: "media-object img-rounded pull-left" %>
           <div class="media-body">
             <b>Create a new poll!</b>
           </div>
@@ -14,14 +14,10 @@
 
       <div class="panel-body">
         <div class="row">
-          <div class="col-xs-2">
-            <div class="btn btn-primary btn-sm fileUpload">
-              <span class="glyphicon glyphicon-camera pull-left"></span>
-              <input type="file" class="upload" />
-            </div>
-            <img id="uploadPreview" class="img-responsive img-rounded"/>
+          <div class="col-xs-3" style="padding-left: 1px;">
+            <%= render "photo_button", f: f %>
           </div>
-          <div class="col-xs-10">
+          <div class="col-xs-9">
             <%= f.label :body, class: "sr-only" %>
             <%= f.text_area :body, class: "form-control input-sm", placeholder: "Enter a question!" %>
           </div>
@@ -30,42 +26,36 @@
 
       <div class="list-group">
 
-        <%= f.fields_for :answers, @poll.answers.find_or_initialize_by(poll: @poll) do |a| %>
+        <%#= f.fields_for :answers, @poll.answers.find_or_initialize_by(poll: @poll) do |a| %>
+        <%= f.fields_for :answers, @answers do |a| %>
           <div class="list-group-item copy-fields">
-            <div class="row">
-              <div class="col-xs-2">
-                <div class="btn btn-primary btn-sm fileinput-button">
-                  <span class="glyphicon glyphicon-camera pull-left"></span>
-                </div>
-              </div>
-              <div class="col-xs-10">
-                <%= a.label :body, class: "sr-only" %>
-                <%= a.text_field :body, class: "form-control input-sm", placeholder: "Enter poll answer!" %>
-                <%= link_to_add_fields "+Answer", f, :answers %>
-                <!--<button type="button" class="btn btn-primary btn-sm pull-right" disabled="disabled">
-
-                  <span class="caret"></span><span class="pull-right">More</span></button>-->
-              </div>
-            </div>
+            <%= render "answer_fields", f: a %>
           </div>
         <% end %>
       </div>
 
       <div class="panel-footer">
         <div class="row">
+
           <div class="col-sm-4">
+
             <div class="checkbox">
             <%= f.label :allow_write_in do %>
               <%= f.check_box :allow_write_in %>Allow write-ins?
             <% end %>
+
             </div>
           </div>
           <div class="col-sm-4 col-sm-offset-4">
             <%= f.submit class: "btn btn-primary col-xs-12" %>
           </div>
         </div>
+
       </div>
     </div>
+  </div>
+  <div class="col-xs-12 col-md-3">
+    <%= render "friends" %>
   </div>
 </div>
 <% end %>

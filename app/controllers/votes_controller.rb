@@ -5,5 +5,7 @@ class VotesController < ApplicationController
     @vote = Vote.new(safe_vote)
     @vote.user = current_user
     @vote.save
+
+    redirect_to @vote.poll
   end
 end

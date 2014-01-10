@@ -1,0 +1,5 @@
+<div class="btn btn-primary btn-sm fileUpload pull-right" id="fileUpload">
+  <span class="glyphicon glyphicon-camera pull-left"></span>
+  <%= f.file_field :image, class: "upload", id: "fileupload", onchange: "PreviewImage();"%>
+</div>
+<img id="uploadPreview" class="img-responsive"/>

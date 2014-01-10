@@ -1,0 +1,14 @@
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <b>Invite friends</b>
+  </div>
+  <div class="panel-body pre-scrollable">
+    <% current_user.friends.each do |friend| %>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox"><%= friend["name"] %>
+          </label>
+        </div>
+    <% end %>
+  </div>
+</div>
