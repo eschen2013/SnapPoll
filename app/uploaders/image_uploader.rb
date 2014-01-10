@@ -36,6 +36,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # version :thumb do
   #   process :scale => [50, 50]
   # end
+  version :standard do
+    cloudinary_transformation transformation: "auto-rotate"
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

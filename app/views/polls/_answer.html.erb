@@ -1,7 +1,7 @@
 <div class="row">
   <% if answer.image_url %>
     <div class="col-xs-12 col-sm-6">
-      <%= image_tag answer.image_url.to_s, class: "img-responsive" %>
+      <%= image_tag answer.image_url(:standard), class: "img-responsive" %>
     </div>
   <% end %>
   <div class="col-xs-12 col-sm-6">

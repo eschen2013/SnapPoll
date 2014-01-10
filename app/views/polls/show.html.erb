@@ -14,7 +14,7 @@
       <div class="panel-body row">
         <% if @poll.image_url %>
           <div class="col-xs-3">
-            <%= image_tag @poll.image_url.to_s, class: "img-responsive" %>
+            <%= image_tag @poll.image_url(:standard), class: "img-responsive" %>
           </div>
         <% end %>
         <div class="col-xs-9">
