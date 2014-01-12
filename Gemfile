@@ -5,7 +5,10 @@ gem 'rails', '4.0.1'
 
 # Use sqlite3 as the database for Active Record
 group :development do
-  gem 'sqlite3'
+  gem 'sqlite3'    
+  gem 'pry-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 # Use SCSS for stylesheets

@@ -23,8 +23,14 @@ class PollsController < ApplicationController
                                              :allow_write_in,  
                                              :expires_at,
                                              answers_attributes: [:id, :body, :image])
+    
     @poll = Poll.new safe_poll
     @poll.user = current_user
+    if params[:poll_invites] 
+      params[:poll_invites].keys.each do |id|
+        @poll.poll_invites.find_or_initialize_by(uid: id, poll: @poll)
+      end
+    end
     @poll.save
 
     redirect_to @poll
