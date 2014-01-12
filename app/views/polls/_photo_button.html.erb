@@ -1,4 +1,4 @@
-<%= f.label :image, class: "btn btn-primary btn-sm fileUpload pull-right", id: "photo-btn-#{f.index}" do %>
+<%= f.label :image, class: "btn btn-primary btn-sm fileUpload pull-right", id: "photo-btn-[#{f.index}]" do %>
   <span class="glyphicon glyphicon-camera pull-left"></span>
-  <%= f.file_field :image, class: "upload", id: "photo-input-#{f.index}", onchange: "PreviewImage('#{f.index}');"%>
+  <%= f.file_field :image, class: "upload", id: "photo-input-[#{f.index}]", onchange: "PreviewImage('[#{f.index}]');"%>
 <% end %>

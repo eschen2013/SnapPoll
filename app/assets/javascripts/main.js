@@ -11,7 +11,7 @@ function PreviewImage(idx) {
   oFReader.readAsDataURL(document.getElementById("photo-input-"+idx).files[0]);
   oFReader.onload = function (oFREvent) {
     document.getElementById("photo-preview-"+idx).src = oFREvent.target.result;
-    $("#photo-div-"+idx).show
+    document.getElementById("photo-div-"+idx).classList.remove("hidden")
   };
 };
 

@@ -42,6 +42,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'cocoon'
 gem 'carrierwave'
 gem 'cloudinary'
 gem "koala", "~> 1.8.0rc1"

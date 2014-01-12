@@ -7,7 +7,7 @@
     <% current_user.friends.each do |friend| %>
         <div class="checkbox">
           <label>
-            <input type="checkbox"><%= friend["name"] %>
+            <input type="checkbox" name="poll_invite[<%=friend["id"]%>]"><%= friend["name"] %>
           </label>
         </div>
     <% end %>

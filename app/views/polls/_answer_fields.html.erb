@@ -1,14 +1,17 @@
-<div class="row">
-  <div class="col-xs-12 col-sm-6" id="photo-div-<%=f.index%>">
-    <img id="photo-preview-<%=f.index%>" class="img-responsive"/>
+<div class="list-group-item">
+  <div class="row hidden" id="photo-div-[<%=f.index%>]">
+    <div class="col-xs-12 col-sm-6">
+      <img id="photo-preview-[<%=f.index%>]" class="img-responsive"/>
+      <br/>
+    </div>
   </div>
-</div>
-<div class="row">
-  <div class="col-xs-2">
-    <%= render "photo_button", f: f %>
-  </div>
-  <div class="col-xs-10">
-    <%= f.label :body, class: "sr-only" %>
-    <%= f.text_field :body, class: "form-control", placeholder: placeholder %>
+  <div class="row">
+    <div class="col-xs-10">
+      <%= f.label :body, class: "sr-only" %>
+      <%= f.text_field :body, class: "form-control", placeholder: "blarg" %>
+    </div>
+    <div class="col-xs-2">
+      <%= render "photo_button", f: f %>
+    </div>
   </div>
 </div>
