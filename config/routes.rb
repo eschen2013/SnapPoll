@@ -3,7 +3,7 @@ SnapPoll::Application.routes.draw do
   get "user" => "users#index"
   resources :votes, only: [:create]
 
-  resources :polls, only: [:show, :new, :create]
+  resources :polls, only: [:show, :new, :create, :destroy]
 
   resources :answers, only: [:create]
 

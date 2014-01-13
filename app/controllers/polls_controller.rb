@@ -10,8 +10,7 @@ class PollsController < ApplicationController
     @poll = Poll.find params[:id]
     @votes = @poll.answers.map { |a| Vote.new(answer: a, poll: @poll) }
 
-    @answer = Answer.new
-    @answer.poll = @poll
+    @answer = Answer.new(poll: @poll)
 
     @num_votes = 0
     if current_user
@@ -53,5 +52,17 @@ class PollsController < ApplicationController
     @poll.save
 
     redirect_to @poll
+  end
+
+  def destroy
+    @poll = Poll.find(params[:id])
+
+    if @poll.user == current_user
+      @poll.destroy
+      redirect_to root_path
+    else
+      flash[:notice] = "You can't delete #{@poll.user.name}'s poll!"
+      redirect_to @poll
+    end
   end
 end

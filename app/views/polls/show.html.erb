@@ -34,12 +34,13 @@
         <% end %>
           <% if !@user_vote and @poll.allow_write_in %>
             <%= form_for @answer do |f| %>
+              <%= f.hidden_field :poll_id %>
               <%= render "answer_fields", f: f, placeholder: "Submit your own answer!" %>
             <% end %>
           <% end %>
         </div>
       </div>
-
+    <%= link_to "Delete!", @poll, method: :delete, class: "btn btn-sm btn-primary" %>
     </div>
   <div class="col-xs-12 col-md-3">
     <%= form_for PollInvite.new(poll: @poll) do |f| %>
