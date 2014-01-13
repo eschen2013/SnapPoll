@@ -33,26 +33,23 @@
       <div class="list-group">
         <%= f.fields_for :answers do |a| %>
           <%= render "answer_fields", f: a, placeholder: "Enter an answer!" %>
-
-        <% end %>         
-        <div class="nested_fields">
-          <%= link_to_add_association 'add_answer', f, :answers, render_options: { locals: { placeholder: "Enter an answer!" } } %>
-        </div>
+        <% end %>
+        <div class="answer_fields"></div>
       </div>
 
       <div class="panel-footer">
         <div class="row">
-
           <div class="col-sm-4">
-
+            <%= link_to_add_association '+ Add Answer', f, :answers, 'data-association-insertion-node' => '.answer_fields', render_options: { locals: { placeholder: "Enter an answer!" } } %>
+          </div>
+          <div class="col-sm-4">
             <div class="checkbox">
-            <%= f.label :allow_write_in do %>
-              <%= f.check_box :allow_write_in %>Allow write-ins?
-            <% end %>
-
+              <%= f.label :allow_write_in do %>
+                <%= f.check_box :allow_write_in %>Allow write-ins?
+              <% end %>
             </div>
           </div>
-          <div class="col-sm-4 col-sm-offset-4">
+          <div class="col-sm-4">
             <%= f.submit class: "btn btn-primary col-xs-12" %>
           </div>
         </div>
