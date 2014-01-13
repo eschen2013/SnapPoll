@@ -9,9 +9,12 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find params[:id]
     @votes = @poll.answers.map { |a| Vote.new(answer: a, poll: @poll) }
+    @num_votes = 0
     if current_user
       @user_vote = @poll.votes.find_by(user: current_user)
-      @num_votes = @poll.votes.count
+      if @user_vote
+        @num_votes = @poll.votes.count
+      end
     end
     @answer = Answer.new
     @answer.poll = @poll

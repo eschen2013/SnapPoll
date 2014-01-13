@@ -32,11 +32,11 @@
 
       <div class="list-group">
         <%= f.fields_for :answers do |a| %>
-          <%= render "answer_fields", f: a %>
+          <%= render "answer_fields", f: a, placeholder: "Enter an answer!" %>
 
         <% end %>         
         <div class="nested_fields">
-          <%= link_to_add_association 'add_answer', f, :answers %>
+          <%= link_to_add_association 'add_answer', f, :answers, render_options: { locals: { placeholder: "Enter an answer!" } } %>
         </div>
       </div>
 

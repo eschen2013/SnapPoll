@@ -2,9 +2,30 @@
   <% if answer.image_url %>
     <div class="col-xs-12 col-sm-6">
       <%= image_tag answer.image_url(:standard), class: "img-responsive" %>
+      <br/>
     </div>
   <% end %>
   <div class="col-xs-12 col-sm-6">
-    <%= answer.body %>
+    <% if !num_votes || num_votes == 0 %>
+      <%= form_for vote, class: "blah" do |f| %>
+        <%= f.hidden_field :answer_id %>
+        <%= f.hidden_field :poll_id %>
+        <%= f.submit "Vote!", class: "btn btn-sm btn-primary pull-right" %>
+      <% end %>
+    <% end %>
+    <p style="font-size: 18px"><%= answer.body %></p>
+    <% if num_votes && num_votes > 0 %>
+      <div class="row">
+        <div class="col-xs-8">
+          <div class="progress">
+            <div class="progress-bar" style="width: <%=100*vote.answer.votes.count/@num_votes%>%">
+            </div>
+          </div>
+        </div>
+        <div class="col-xs-1">
+          <span class="badge"><%=vote.answer.votes.count%></span>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
