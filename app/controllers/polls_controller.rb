@@ -9,15 +9,31 @@ class PollsController < ApplicationController
   def show
     @poll = Poll.find params[:id]
     @votes = @poll.answers.map { |a| Vote.new(answer: a, poll: @poll) }
+
+    @answer = Answer.new
+    @answer.poll = @poll
+
     @num_votes = 0
     if current_user
       @user_vote = @poll.votes.find_by(user: current_user)
       if @user_vote
         @num_votes = @poll.votes.count
       end
+
+      # This is probably crap...
+      # Trying to get the intersection of uids invited and the user's friends
+      @friends = @current_user.friends
+      @invited = @friends.select do |f|
+        @poll.poll_invites.find_by(uid: f["id"])
+      end
+      @not_invited = @friends - @invited
+
+      # @invited = @poll.poll_invites.map do |pi|
+      #   @friends.find { |f| f["id"] == pi.uid }
+      # end
+
     end
-    @answer = Answer.new
-    @answer.poll = @poll
+
   end
 
   def create

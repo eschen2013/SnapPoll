@@ -4,12 +4,19 @@
     <b>Invite friends</b>
   </div>
   <div class="panel-body pre-scrollable">
-    <% current_user.friends.each do |friend| %>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" name="poll_invites[<%=friend["id"]%>]"><%= friend["name"] %>
-          </label>
-        </div>
-    <% end %>
+    <% invited.each do |friend| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="poll_invites[<%=friend["id"]%>]" checked><%= friend["name"] %>
+        </label>
+      </div>
+    <% end if invited && !invited.empty? %>
+    <% not_invited.each do |friend| %>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="poll_invites[<%=friend["id"]%>]"><%= friend["name"] %>
+        </label>
+      </div>
+    <% end if not_invited && !not_invited.empty? %>
   </div>
 </div>

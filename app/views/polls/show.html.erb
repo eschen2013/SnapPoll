@@ -33,17 +33,19 @@
           </div>
         <% end %>
           <% if !@user_vote and @poll.allow_write_in %>
-            <div class="list-group-item">
-              <%= form_for @answer do |f| %>
-                <%= render "answer_fields", f: f, placeholder: "Submit your own answer!" %>
-              <% end %>
-            </div>
+            <%= form_for @answer do |f| %>
+              <%= render "answer_fields", f: f, placeholder: "Submit your own answer!" %>
+            <% end %>
           <% end %>
         </div>
       </div>
 
     </div>
   <div class="col-xs-12 col-md-3">
-    <%= render "friends" %>
+    <%= form_for PollInvite.new(poll: @poll) do |f| %>
+      <%= f.hidden_field :poll_id %>
+      <%= render 'friends', not_invited: @not_invited, invited: @invited %>
+      <%= f.submit "Invite!", class: "btn btn-sm btn-primary pull-right" %>
+    <% end %>
   </div>
 </div>

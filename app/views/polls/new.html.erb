@@ -61,7 +61,7 @@
     </div>
   </div>
   <div class="col-xs-12 col-md-3">
-    <%= render "friends" %>
+    <%= render 'friends', not_invited: current_user.friends, invited: nil %>
   </div>
 </div>
 <% end %>
